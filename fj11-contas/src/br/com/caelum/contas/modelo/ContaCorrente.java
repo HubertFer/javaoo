@@ -9,4 +9,9 @@ public class ContaCorrente extends Conta {
 	public String getTipo(){
 		return "Conta Corrente";
 	}
+
+	public double getValorImposto() {
+		// TODO Auto-generated method stub
+		return this.getSaldo() * 0.01;
+	}
 }

@@ -19,7 +19,7 @@ public class ManipuladorDeContas {
 		String tipo = evento.getSelecionadoNoRadio("tipo");
 		if (tipo.equals("Conta Corrente")){
 			this.conta = new ContaCorrente();
-		} else if (tipo.equals("Conta Poupança")){
+		} else if (tipo.equals("Conta Poupançavalor")){
 			this.conta = new ContaPupanca();
 		}
 		this.conta.setAgencia(evento.getString("agencia"));
