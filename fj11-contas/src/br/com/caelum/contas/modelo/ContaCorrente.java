@@ -3,7 +3,13 @@ package br.com.caelum.contas.modelo;
 public class ContaCorrente extends Conta {
 	@Override
 	public void saca(double valor){
-		this.setSaldo(this.getSaldo()-(valor+0.1));
+		if (valor < 0){
+			throw new IllegalArgumentException("Você tentou sacar um valor negativo");
+		}
+		if (this.saldo < valor){
+			throw new SaldoInsuficienteException("Você tentou sacar um valor negativo");
+		}
+		this.saldo -= (valor + 0.10);
 	}
 	
 	public String getTipo(){

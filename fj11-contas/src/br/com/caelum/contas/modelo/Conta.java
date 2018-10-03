@@ -1,13 +1,19 @@
 package br.com.caelum.contas.modelo;
 
 public abstract class Conta {
-	private double saldo;
-	private String titular;
-	private int numero;
-	private String agencia;
+	protected double saldo;
+	protected String titular;
+	protected int numero;
+	protected String agencia;
+	
 	
 	public void saca(double valor){
-		setSaldo(getSaldo() - valor);
+		if (valor < 0){
+			throw new IllegalArgumentException("Você tentou sacar" + " um valor negativo");
+		}else{
+			this.saldo -= valor;
+		}
+	
 	}
 
 	public String getTitular() {
@@ -35,7 +41,11 @@ public abstract class Conta {
 	}
 
 	public void deposita(double valor){
-		setSaldo(getSaldo() + valor);
+		if (valor < 0){
+			throw new IllegalArgumentException("Você tentou depositar" + " um valor negativo");
+		} else {
+			this.saldo += valor;
+		}
 	}
 
 	public String saldo() {
