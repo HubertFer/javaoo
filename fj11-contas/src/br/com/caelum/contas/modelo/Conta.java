@@ -1,11 +1,17 @@
 package br.com.caelum.contas.modelo;
 
 public abstract class Conta {
+	
+	
 	protected double saldo;
 	protected String titular;
 	protected int numero;
 	protected String agencia;
 	
+	@Override
+	public String toString(){
+		return "[titular=" + titular.toUpperCase() + ", numero=" + numero + ",agencia=" + agencia +"]";
+	}
 	
 	public void saca(double valor){
 		if (valor < 0){
@@ -66,5 +72,15 @@ public abstract class Conta {
 	public void transfere(double valor, Conta conta){
 		this.saca(valor);
 		conta.deposita(valor);
+	}
+	
+	public boolean equals(Object obj){
+		if (obj == null){
+			return false;
+		}
+		
+		Conta outraConta = (Conta) obj;
+		
+		return this.numero == outraConta.numero && this.agencia.equals(outraConta.agencia);
 	}
 }
