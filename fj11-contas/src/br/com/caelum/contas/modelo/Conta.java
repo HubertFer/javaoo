@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public abstract class Conta {
+public abstract class Conta implements Comparable<Conta> {
 	
 	
 	protected double saldo;
@@ -10,7 +10,8 @@ public abstract class Conta {
 	
 	@Override
 	public String toString(){
-		return "[titular=" + titular.toUpperCase() + ", numero=" + numero + ",agencia=" + agencia +"]";
+		return "[titular=" + titular.toUpperCase() + ", numero=" + numero
+				+ ",agencia=" + agencia +"]";
 	}
 	
 	public void saca(double valor){
@@ -82,5 +83,9 @@ public abstract class Conta {
 		Conta outraConta = (Conta) obj;
 		
 		return this.numero == outraConta.numero && this.agencia.equals(outraConta.agencia);
+	}
+	
+	public int compareTo(Conta outraConta){
+		return this.titular.compareTo(outraConta.titular);
 	}
 }
